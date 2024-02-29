@@ -33,6 +33,12 @@ export class InMemoryProductRepository implements ProductRepository {
     return product
   }
 
+  async saveProduct(data: Products) {
+    const itemIndex = this.items.findIndex((item) => item.id === data.id)
+
+    this.items[itemIndex] = data
+  }
+
   async createProduct(data: Products) {
     const product = {
       id: randomUUID(),
@@ -45,5 +51,11 @@ export class InMemoryProductRepository implements ProductRepository {
     this.items.push(product)
 
     return product
+  }
+
+  async delete(id: string) {
+    const itemIndex = this.items.findIndex((item) => item.id === id)
+
+    this.items.splice(itemIndex, 1)
   }
 }

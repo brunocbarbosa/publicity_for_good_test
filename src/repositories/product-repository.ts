@@ -4,5 +4,7 @@ export interface ProductRepository {
   findAll(): Promise<string[] | null>
   findByid(id: string): Promise<Products | null>
   findByName(name: string): Promise<Products | null>
+  saveProduct(data: Products): Promise<void>
   createProduct(data: Products): Promise<Products>
+  delete(id: string): Promise<void>
 }
