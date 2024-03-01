@@ -8,13 +8,7 @@ export class InMemoryProductRepository implements ProductRepository {
   async findAll() {
     if (this.items.length === 0) return null
 
-    const products: string[] = []
-
-    for (const item of this.items) {
-      products.push(item.name)
-    }
-
-    return products
+    return this.items
   }
 
   async findByid(id: string) {

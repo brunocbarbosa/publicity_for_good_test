@@ -1,7 +1,7 @@
 import { Products } from '@/utils/types/product'
 
 export interface ProductRepository {
-  findAll(): Promise<string[] | null>
+  findAll(): Promise<Products[] | null>
   findByid(id: string): Promise<Products | null>
   findByName(name: string): Promise<Products | null>
   saveProduct(data: Products): Promise<void>

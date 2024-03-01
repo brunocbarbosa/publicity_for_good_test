@@ -1,8 +1,9 @@
 import { ProductRepository } from '@/repositories/product-repository'
 import { ProductsDoNotExistsError } from './errors/products-do-not-exists-error'
+import { Products } from '@/utils/types/product'
 
 interface getProductsUseCaseResponse {
-  products: string[]
+  products: Products[]
 }
 
 export class GetProductsUseCase {
