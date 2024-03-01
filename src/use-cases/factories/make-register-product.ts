@@ -1,4 +1,4 @@
-import { PrismaProductRepository } from '@/tests/prisma/product-repository'
+import { PrismaProductRepository } from '@/repositories/prisma/product-repository'
 import { RegisterProductUseCase } from '../register-product'
 
 export function makeRegisterProductUseCase() {

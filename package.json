@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dist": "tsup src --out-dir dist",
+    "docker:compose" : "docker-compose up -d",
+    "build": "run-s docker:compose prisma:migrate:deploy prisma:generate prisma:seed dist",
     "dev": "tsx watch src/server.ts",
     "test:create-prisma-environment": "npm link ./prisma/vitest-environment-prisma",
     "test:install-prisma-environment": "npm link vitest-environment-prisma",
@@ -24,6 +27,7 @@
   "devDependencies": {
     "@prisma/client": "^5.10.2",
     "@rocketseat/eslint-config": "^2.2.2",
+    "@types/bcryptjs": "2.4.6",
     "@types/node": "^20.11.22",
     "@types/supertest": "^6.0.2",
     "eslint": "^8.57.0",
@@ -38,6 +42,8 @@
     "vitest": "0.33.0"
   },
   "dependencies": {
+    "@fastify/jwt": "8.0.0",
+    "bcryptjs": "2.4.3",
     "dotenv": "^16.4.5",
     "fastify": "^4.26.1",
     "pg": "8.11.3",

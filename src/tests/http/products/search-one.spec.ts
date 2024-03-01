@@ -2,6 +2,7 @@ import request from 'supertest'
 import { app } from '@/app'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import { prisma } from '@/lib/prisma'
+import { createAndAuthenticateUser } from '@/utils/tests/create-and-authenticate-user'
 
 describe('Search One (e2e)', () => {
   beforeAll(async () => {
@@ -12,6 +13,8 @@ describe('Search One (e2e)', () => {
   })
 
   it('should be able to search one product', async () => {
+    const { token } = await createAndAuthenticateUser(app)
+
     const product = await prisma.product.create({
       data: {
         name: 'Computer',
@@ -23,6 +26,7 @@ describe('Search One (e2e)', () => {
 
     const response = await request(app.server)
       .get(`/api/products/${product.id}`)
+      .set('Authorization', `Bearer ${token}`)
       .send()
 
     expect(response.statusCode).toEqual(200)
