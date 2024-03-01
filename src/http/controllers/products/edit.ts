@@ -5,7 +5,7 @@ import { z } from 'zod'
 
 export async function edit(req: FastifyRequest, rep: FastifyReply) {
   const editProductParamSchema = z.object({
-    productId: z.string().uuid(),
+    id: z.string().uuid(),
   })
 
   const editProductSchema = z.object({
@@ -15,7 +15,7 @@ export async function edit(req: FastifyRequest, rep: FastifyReply) {
     availability: z.boolean().optional(),
   })
 
-  const { productId } = editProductParamSchema.parse(req.params)
+  const { id } = editProductParamSchema.parse(req.params)
 
   const { name, description, price, availability } = editProductSchema.parse(
     req.body,
@@ -25,7 +25,7 @@ export async function edit(req: FastifyRequest, rep: FastifyReply) {
     const editUseCase = makeEditProductUseCase()
 
     await editUseCase.execute({
-      id: productId,
+      id,
       name,
       description,
       price,

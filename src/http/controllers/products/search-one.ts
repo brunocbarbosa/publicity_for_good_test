@@ -4,14 +4,14 @@ import { z } from 'zod'
 
 export async function searchOne(req: FastifyRequest, rep: FastifyReply) {
   const searchProductParamSchema = z.object({
-    productId: z.string().uuid(),
+    id: z.string().uuid(),
   })
 
-  const { productId } = searchProductParamSchema.parse(req.params)
+  const { id } = searchProductParamSchema.parse(req.params)
 
   const getOneUseCase = makeSearhOneProductUseCase()
 
-  const { product } = await getOneUseCase.execute({ id: productId })
+  const { product } = await getOneUseCase.execute({ id })
 
   return rep.status(200).send({ product })
 }

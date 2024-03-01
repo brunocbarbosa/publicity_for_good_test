@@ -4,14 +4,14 @@ import { z } from 'zod'
 
 export async function erase(req: FastifyRequest, rep: FastifyReply) {
   const searchProductParamSchema = z.object({
-    productId: z.string().uuid(),
+    id: z.string().uuid(),
   })
 
-  const { productId } = searchProductParamSchema.parse(req.params)
+  const { id } = searchProductParamSchema.parse(req.params)
 
   const deleteUseCase = makeDeleteProductUseCase()
 
-  await deleteUseCase.execute({ id: productId })
+  await deleteUseCase.execute({ id })
 
   return rep.status(201).send()
 }

@@ -22,7 +22,7 @@ describe('Erase (e2e)', () => {
     })
 
     const response = await request(app.server)
-      .delete(`/products/${product.id}`)
+      .delete(`/api/products/${product.id}`)
       .send()
 
     expect(response.statusCode).toEqual(201)

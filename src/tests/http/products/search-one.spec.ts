@@ -22,9 +22,9 @@ describe('Search One (e2e)', () => {
     })
 
     const response = await request(app.server)
-      .get(`/products/${product.id}`)
+      .get(`/api/products/${product.id}`)
       .send()
 
-    expect(response.statusCode).toEqual(201)
+    expect(response.statusCode).toEqual(200)
   })
 })

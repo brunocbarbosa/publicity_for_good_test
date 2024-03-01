@@ -6,9 +6,9 @@ import { edit } from './edit'
 import { erase } from './erase'
 
 export async function productsRoutes(app: FastifyInstance) {
-  app.post('/products', register)
-  app.patch('/products/:productId', edit)
-  app.get('/products', searchAll)
-  app.get('/products/:productId', searchOne)
-  app.delete('/products/:productId', erase)
+  app.post('/api/products', register)
+  app.patch('/api/products/:id', edit)
+  app.get('/api/products', searchAll)
+  app.get('/api/products/:id', searchOne)
+  app.delete('/api/products/:id', erase)
 }

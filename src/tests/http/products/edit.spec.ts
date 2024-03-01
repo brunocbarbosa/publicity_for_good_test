@@ -22,7 +22,7 @@ describe('Edit (e2e)', () => {
     })
 
     const response = await request(app.server)
-      .patch(`/products/${product.id}`)
+      .patch(`/api/products/${product.id}`)
       .send({
         name: 'Computer edited',
       })

@@ -11,7 +11,7 @@ describe('Register (e2e)', () => {
   })
 
   it('should be able to register', async () => {
-    const response = await request(app.server).post('/products').send({
+    const response = await request(app.server).post('/api/products').send({
       name: 'Computer',
       description: 'New computer',
       price: 240,
