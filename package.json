@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node dist/server.js",
     "dist": "tsup src --out-dir dist",
     "docker:compose" : "docker-compose up -d",
     "build": "run-s docker:compose prisma:migrate:deploy prisma:generate prisma:seed dist",
